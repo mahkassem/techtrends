@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  {{ .Values.configmap.data }}
+kind: ConfigMap
+metadata:
+  name: techtrends
+  namespace: {{ .Values.namespace.name }}
