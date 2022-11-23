@@ -1,0 +1,13 @@
+## Docker commands used to build the application
+
+`docker build -t {myapp} ./techtrends/`
+
+## Docker commands used to run the application
+
+`docker run -d -p 5000:3111 {myapp}`
+
+## Docker commands used to get the application logs
+
+## Logs from the container running the TechTrends application
+
+`docker logs {CONTAINER ID}`
