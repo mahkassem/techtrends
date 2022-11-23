@@ -7,7 +7,7 @@ LABEL maintainer="Mahmoud Kassem"
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY . /app
+ADD ./techtrends/ /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
