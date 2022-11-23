@@ -9,10 +9,15 @@ from flask import Flask, json, render_template, request, url_for, redirect, flas
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 
+# define database connection count
+connectionCount = int()
+
 
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    global connectionCount
+    connectionCount += 1
     return connection
 
 # Function to get a post using its ID
@@ -33,15 +38,6 @@ def getPostsCount():
     posts = connection.execute('SELECT * FROM posts').fetchall()
     connection.close()
     return len(posts)
-
-# get database status
-
-
-def getConnectionCount():
-    connection = get_db_connection()
-    count = connection.total_changes
-    connection.close()
-    return count
 
 
 # Define the Flask application
@@ -127,11 +123,11 @@ def healthcheck():
 
 @app.route('/metrics')
 def metrics():
+    global connectionCount
     postsCount = getPostsCount()
-    dbConCount = getConnectionCount()
     response = app.response_class(
         response=json.dumps(
-            {"db_connection_count": dbConCount, "post_count": postsCount}),
+            {"db_connection_count": connectionCount, "post_count": postsCount}),
         status=200,
         mimetype='application/json'
     )
