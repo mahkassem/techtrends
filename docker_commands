@@ -1,13 +1,44 @@
 ## Docker commands used to build the application
 
-`docker build -t {myapp} ./techtrends/`
+`docker build -t techtrends ./techtrends/`
+
+`docker tag techtrends mahkdev/techtrends:v1.0.0`
 
 ## Docker commands used to run the application
 
-`docker run -d -p 5000:3111 {myapp}`
+`docker run -d -p 7111:3111 techtrends`
 
 ## Docker commands used to get the application logs
 
+`docker logs {CONTAINER ID}`
+
 ## Logs from the container running the TechTrends application
 
-`docker logs {CONTAINER ID}`
+```bash
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:22] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:22] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:26] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:26] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:2022-11-23 02:37:29.813894, Article "test" is created!
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:29] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:29] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:34] "GET /metric HTTP/1.1" 404 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:36] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:37:42] "GET /healthz HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:38:35] "GET /healthz HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:39:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:39:11] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:2022-11-23 02:39:12.919446, Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:39:12] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [23/Nov/2022 02:39:12] "GET /static/css/main.css HTTP/1.1" 304 -
+```
