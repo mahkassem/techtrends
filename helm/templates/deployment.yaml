@@ -31,10 +31,10 @@ spec:
           livenessProbe:
             httpGet:
               path: {{ .Values.livenessProbe }}
-              port: 3111
+              port: {{ .Values.containerPort }}
           readinessProbe:
             httpGet:
               path: {{ .Values.readinessProbe }}
-              port: 3111
+              port: {{ .Values.containerPort }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}

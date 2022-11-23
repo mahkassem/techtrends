@@ -82,7 +82,7 @@ def post(post_id):
 def about():
     datetimeUtc = datetime.datetime.utcnow()
     app.logger.info(
-            '%s, About page is retrieved!' % (datetimeUtc))
+        '%s, About page is retrieved!' % (datetimeUtc))
     return render_template('about.html')
 
 # Define the post creation functionality
@@ -105,7 +105,7 @@ def create():
 
             datetimeUtc = datetime.datetime.utcnow()
             app.logger.info(
-                    '%s, Article "%s" is created!' % (datetimeUtc, title))
+                '%s, Article "%s" is created!' % (datetimeUtc, title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
@@ -142,5 +142,6 @@ def metrics():
 if __name__ == "__main__":
     # logs to a STDOUT, DEBUG level
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    logging.basicConfig(stream=sys.stderr, level=logging.ERROR)
     # run the application
     app.run(host='0.0.0.0', port='3111')
